@@ -1,35 +1,38 @@
-const SUPABASE_URL = "https://ffcyuihdurumltnquixa.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmY3l1aWhkdXJ1bWx0bnF1aXhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MzU3NTEsImV4cCI6MjA3NjExMTc1MX0.XTSQKhdURhgMDhY-maUqj-HKBJKngZ9bveHvR29-Ju0";
-const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+// ✅ CONFIGURAÇÃO DO SUPABASE
+const SUPABASE_URL = "https://SEU-PROJETO.supabase.co"; // substitua pelo seu
+const SUPABASE_KEY = "CHAVE_PUBLICA_ANON_AQUI"; // substitua pela chave anon (não a service key)
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-document.getElementById("loginBtn").addEventListener("click", async () => {
-  const login = document.getElementById("loginField").value.trim();
-  const senha = document.getElementById("passwordField").value.trim();
-  const msg = document.getElementById("loginMessage");
+// ✅ FUNÇÃO DE LOGIN
+const form = document.getElementById("loginForm");
+const msg = document.getElementById("msg");
 
-  if (!login) return (msg.textContent = "Informe o telefone ou e-mail");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  const { data: user } = await client
-    .from("usuarios")
-    .select("*")
-    .or(`telefone.eq.${login},email.eq.${login}`)
-    .single();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-  if (!user) return (msg.textContent = "Usuário não encontrado.");
+  msg.textContent = "Verificando...";
 
-  if (!user.senha) {
-    document.getElementById("createPasswordSection").classList.remove("hidden");
-    document.getElementById("setPasswordBtn").onclick = async () => {
-      const newPass = document.getElementById("newPassword").value;
-      const confirm = document.getElementById("confirmPassword").value;
-      if (newPass !== confirm) return (msg.textContent = "Senhas não coincidem.");
-      await client.from("usuarios").update({ senha: newPass }).eq("id", user.id);
-      localStorage.setItem("userId", user.id);
+  try {
+    // 🔐 Login no Supabase
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      msg.textContent = "❌ Erro: " + error.message;
+      return;
+    }
+
+    msg.textContent = "✅ Login realizado com sucesso!";
+    setTimeout(() => {
       window.location.href = "dashboard.html";
-    };
-  } else {
-    if (user.senha !== senha) return (msg.textContent = "Senha incorreta.");
-    localStorage.setItem("userId", user.id);
-    window.location.href = "dashboard.html";
+    }, 1000);
+  } catch (err) {
+    console.error(err);
+    msg.textContent = "❌ Ocorreu um erro inesperado.";
   }
 });
