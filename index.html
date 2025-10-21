@@ -5,26 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agent IA - Login</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
-<body class="login-body">
+<body>
   <div class="login-container">
-    <h1 class="logo">Agent <span>IA</span></h1>
-    <h2>Entrar</h2>
+    <h2>Agent <span style="color:#016bff;">IA</span></h2>
     <p>Use seu telefone ou e-mail cadastrado</p>
-
-    <input type="text" id="loginField" placeholder="Telefone ou E-mail">
-    <input type="password" id="passwordField" placeholder="Senha">
-    <button id="loginBtn">Entrar</button>
-
-    <div id="createPasswordSection" class="hidden">
-      <p>Usuário encontrado sem senha. Crie uma agora:</p>
-      <input type="password" id="newPassword" placeholder="Nova senha">
-      <input type="password" id="confirmPassword" placeholder="Confirme a senha">
-      <button id="setPasswordBtn">Salvar Senha</button>
-    </div>
-
-    <p id="loginMessage"></p>
+    <form id="loginForm">
+      <input type="text" id="email" placeholder="E-mail ou telefone" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="msg"></p>
   </div>
+
+  <!-- SDK oficial do Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Seu script -->
+  <script src="script.js"></script>
 </body>
 </html>
