@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent IA - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h1 class="logo">Agent <span>IA</span></h1>
+    <h2>Entrar</h2>
+    <p>Use seu telefone ou e-mail cadastrado</p>
+
+    <input type="text" id="loginField" placeholder="Telefone ou E-mail">
+    <input type="password" id="passwordField" placeholder="Senha">
+    <button id="loginBtn">Entrar</button>
+
+    <div id="createPasswordSection" class="hidden">
+      <p>Usuário encontrado sem senha. Crie uma agora:</p>
+      <input type="password" id="newPassword" placeholder="Nova senha">
+      <input type="password" id="confirmPassword" placeholder="Confirme a senha">
+      <button id="setPasswordBtn">Salvar Senha</button>
+    </div>
+
+    <p id="loginMessage"></p>
+  </div>
+</body>
+</html>

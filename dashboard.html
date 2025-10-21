@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent IA — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="charts.js"></script>
+  <script defer src="dashboard.js"></script>
+</head>
+<body class="dashboard-body">
+  <header class="header">
+    <h1>Agent <span>IA</span></h1>
+    <button id="logoutBtn">Sair</button>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="cards">
+      <div class="card">
+        <h3>💰 Receitas</h3>
+        <p id="receitas">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>💸 Despesas</h3>
+        <p id="despesas">R$ 0,00</p>
+      </div>
+      <div class="card">
+        <h3>📊 Saldo</h3>
+        <p id="saldo">R$ 0,00</p>
+      </div>
+    </section>
+
+    <section class="chart-section">
+      <canvas id="transacoesChart"></canvas>
+    </section>
+
+    <section class="tabela-section">
+      <h2>📋 Últimas Transações</h2>
+      <table id="transacoesTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

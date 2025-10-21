@@ -1,0 +1,116 @@
+:root {
+  --bg: #0e0e12;
+  --card: #1a1b21;
+  --accent: #4b7bec;
+  --text: #fff;
+  --muted: #999;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* LOGIN */
+.login-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 300px;
+}
+
+.logo {
+  color: var(--text);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+input {
+  width: 90%;
+  margin: 8px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #3867d6;
+}
+
+.hidden {
+  display: none;
+}
+
+/* DASHBOARD */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card);
+  padding: 10px 30px;
+}
+
+.dashboard-container {
+  padding: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 180px;
+}
+
+.chart-section {
+  margin-top: 40px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background: var(--card);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
+}
